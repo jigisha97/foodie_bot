@@ -1,0 +1,6 @@
+streamlit
+langchain
+langchain-community
+pandas
+sqlite-utils
+together
