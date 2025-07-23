@@ -1,7 +1,7 @@
-# foodie_bot
+# Foodie_Bot
 foodieBot is a lightweight yet intelligent food ordering assistant built using Streamlit, LangChain, and the Mistral-7B Instruct model via Together.ai. It allows users to view a menu, place food orders using natural language, and stores orders in a local SQLite database — all through a clean, right-aligned, image-backed UI.
 
-# How It Works? :
+# How It Works?
 - User opens the app and sees a title, input box, and background image.
 - User types a query, like "show me the menu" or "2 pasta and 1 coke".
 - LangChain agent evaluates the prompt and decides which tool to use:
