@@ -2,6 +2,7 @@ import re
 import json
 import sqlite3
 import pandas as pd
+from collections import defaultdict
 import streamlit as st
 from langchain.agents import initialize_agent, Tool
 from langchain.agents.agent_types import AgentType
@@ -38,6 +39,32 @@ def store_order(user_input, parsed_order, total_price):
 
 def show_menu(_):
     return menu_df.to_string(index=False)
+
+def favourite_item():
+    with sqlite3.connect("orders.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT parsed_order FROM orders")
+        rows = cursor.fetchall()
+
+        counter = defaultdict(int)
+        for row in rows:
+            try:
+                items = json.loads(row[0])  # JSON array of strings
+                for item_str in items:
+                    parts = item_str.split(" x ")
+                    if len(parts) == 2:
+                        qty, rest = parts
+                        qty = int(qty.strip())
+                        item = rest.split(" - ")[0].strip()
+                        counter[item] += qty
+            except Exception as e:
+                print(f"Error parsing row: {row[0]} – {e}")
+
+        if not counter:
+            return "No orders found."
+
+        fav = max(counter.items(), key=lambda x: x[1])
+        return f"Most Ordered Item: {fav[0].capitalize()} ({fav[1]} times)"
 
 def process_order(user_input):
     #item pattern can also take from orders.db so dynamic
@@ -80,6 +107,8 @@ agent = initialize_agent(
 )
 
 st.title("Food Ordering Chatbot")
+st.subheader(" Favourite Item")
+st.info(favourite_item())  # Call the function directly
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
