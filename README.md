@@ -27,7 +27,7 @@ pip install -r requirements.txt
 ### Step 4: Create Your Together.ai API Key from - https://api.together.ai/
 
 ### Step 5: Add Your Together.ai API Key
-export TOGETHER_API_KEY=your_api_key_here  # Linux/macOS
+export TOGETHER_API_KEY=your_api_key_here  
 set TOGETHER_API_KEY=your_api_key_here  
 
 ### Step 6: Run Application
