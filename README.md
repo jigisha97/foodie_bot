@@ -9,8 +9,7 @@ foodieBot is a lightweight yet intelligent food ordering assistant built using S
   If it's an order → uses PlaceOrder, parses input, calculates total, and saves it
 - Response is shown in chat format, and added to chat history
 
-
-<img width="1787" height="975" alt="foodie_bot" src="https://github.com/user-attachments/assets/bfddfbe4-91af-476d-847e-9f611d231709" />
+<img width="1766" height="959" alt="foodie_bot_front_page" src="https://github.com/user-attachments/assets/ff49780f-0d82-4a02-a46b-d7f90ffb21c4" />
 
 # How to Run the Project – foodieBot
 ### Step 1: Clone the Repository
