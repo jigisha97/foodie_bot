@@ -53,7 +53,8 @@ def favourite_item():
                 for item_str in items:
                     parts = item_str.split(" x ")
                     if len(parts) == 2:
-                        qty, rest = parts
+                        qty = parts[0]
+                        rest = parts[1]
                         qty = int(qty.strip())
                         item = rest.split(" - ")[0].strip()
                         counter[item] += qty
